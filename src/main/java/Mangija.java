@@ -1,6 +1,6 @@
 public class Mangija implements Ese{
-    private byte elupunktid;
-    private int[] positsioon;
+    private final byte elupunktid;
+    private final int[] positsioon;
     private byte xKiirus;
     private byte yKiirus;
 
