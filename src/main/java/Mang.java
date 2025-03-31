@@ -32,11 +32,12 @@ public class Mang {
                     katkestaMäng();
                 }
                 mangijaA.uuenda();
+                Sisend.hoitudKlahvid.removeAll(Sisend.eemaldatavadKlahvid);
             }
             maailm.lisaMaailma(mangijaA);
             maailm.renderiMaailm();
             try {
-                Thread.sleep(500);
+                Thread.sleep(250);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

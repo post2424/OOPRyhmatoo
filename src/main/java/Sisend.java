@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Sisend implements NativeKeyListener {
+    public static Set<String> hoitudKlahvid = new HashSet<>();
+    public static Set<String> eemaldatavadKlahvid = new HashSet<>();
     public static void initsialiseeriSisend(){
         try {
             GlobalScreen.registerNativeHook();
@@ -17,7 +19,7 @@ public class Sisend implements NativeKeyListener {
         }
         GlobalScreen.addNativeKeyListener(new Sisend());
     }
-    public static Set<String> hoitudKlahvid = new HashSet<>();
+
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
         //System.out.println("Key Pressed in input: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
@@ -25,6 +27,6 @@ public class Sisend implements NativeKeyListener {
     }
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
-        hoitudKlahvid.remove(NativeKeyEvent.getKeyText(e.getKeyCode()));
+        eemaldatavadKlahvid.add(NativeKeyEvent.getKeyText(e.getKeyCode()));
     }
 }
