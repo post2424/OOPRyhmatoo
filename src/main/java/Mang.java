@@ -1,47 +1,42 @@
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
+import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
 import java.util.Iterator;
 
 public class Mang {
-    public static boolean töötab = true;
     private static void katkestaMäng(){
-        Mang.töötab = false;
+        System.out.println("M4ngu too l6petatud.");
         try {
             GlobalScreen.unregisterNativeHook();
         } catch (NativeHookException nativeHookException) {
             nativeHookException.printStackTrace();
         }
+        System.exit(0);
     }
 
     public static void main(String[] args) {
-
-        // Võetud https://github.com/kwhat/jnativehook/blob/2.2/doc/Keyboard.md
-        try {
-            GlobalScreen.registerNativeHook();
-        } catch (NativeHookException ex) {
-            System.err.println("There was a problem registering the native hook.");
-            System.err.println(ex.getMessage());
-
-            System.exit(1);
-        }
-        GlobalScreen.addNativeKeyListener(new Sisend());
-        //Võetud koodi lõpp
-        Mangija MangijaA = new Mangija(0, 0, (byte) 100);
+        Sisend.initsialiseeriSisend();
+        Renderdaja maailm = new Renderdaja(50);
+        char[][] mängijaAIkoon = new char[][]{
+                {'A','A'},
+                {'A','A'}
+        };
+        Mangija mangijaA = new Mangija(0, maailm.maailmaPikkus- mängijaAIkoon.length, (byte)100, mängijaAIkoon);
         Iterator iteraator;
-        while (töötab) {
+        while (true) {
             iteraator = Sisend.hoitudKlahvid.iterator();
-            while (iteraator.hasNext()) {
+            if (iteraator.hasNext()) {
                 if (Sisend.hoitudKlahvid.contains("Escape")) {
                     katkestaMäng();
                 }
-                System.out.println("Main: " + iteraator.next());
-                MangijaA.uuendaKiirust();
+                mangijaA.uuenda();
             }
-
+            maailm.lisaMaailma(mangijaA);
+            maailm.renderiMaailm();
             try {
-                Thread.sleep(100);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

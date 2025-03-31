@@ -7,6 +7,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Sisend implements NativeKeyListener {
+    public static void initsialiseeriSisend(){
+        try {
+            GlobalScreen.registerNativeHook();
+        } catch (NativeHookException ex) {
+            System.err.println("There was a problem registering the native hook.");
+            System.err.println(ex.getMessage());
+            System.exit(1);
+        }
+        GlobalScreen.addNativeKeyListener(new Sisend());
+    }
     public static Set<String> hoitudKlahvid = new HashSet<>();
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
