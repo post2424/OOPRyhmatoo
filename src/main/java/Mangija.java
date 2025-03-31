@@ -1,44 +1,39 @@
+import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
+
 public class Mangija implements Ese{
     private final byte elupunktid;
-    private final int[] positsioon;
+    private int x,y;
     private byte xKiirus;
     private byte yKiirus;
 
-    public Mangija(byte elupunktid, int[] positsioon) {
+    public Mangija(int x, int y,byte elupunktid) {
         this.elupunktid = elupunktid;
-        this.positsioon = positsioon;
+        this.x = x;
+        this.y = y;
         this.xKiirus = 0;
         this.yKiirus = 0;
     }
-
-    public byte getxKiirus() {
-        return xKiirus;
+    public void uuendaPositsiooni(){
+        x += xKiirus; y += yKiirus;
     }
 
-    public void setxKiirus(byte kiirus) {
-        this.xKiirus = kiirus;
-    }
-
-    public byte getyKiirus() {
-        return yKiirus;
-    }
-
-    public void setyKiirus(byte yKiirus) {
-        this.yKiirus = yKiirus;
-    }
-    public void liigu() {
-        if (Input.key == 'd') {
-            xKiirus = 1;
-            System.out.println(xKiirus);
-        } else if (Input.key == 'a') {
-            xKiirus = -1;
-            System.out.println(xKiirus);
-        } else if (Input.key == 'w') {
-            yKiirus = -1;
+    public void uuendaKiirust() {
+        if (Sisend.hoitudKlahvid.contains("W")) {
+            yKiirus -= 1;
             System.out.println(yKiirus);
-        } else if (Input.key == 's'){
-            yKiirus = 1;
+        }
+        if (Sisend.hoitudKlahvid.contains("A")) {
+            xKiirus -= 1;
+            System.out.println(xKiirus);
+        }
+        if (Sisend.hoitudKlahvid.contains("S")) {
+            yKiirus += 1;
+            System.out.println(xKiirus);
+        }
+        if (Sisend.hoitudKlahvid.contains("D")){
+            xKiirus += 1;
             System.out.println(yKiirus);
         }
     }
+
 }
