@@ -23,7 +23,7 @@ public class Mang {
                 {'A','A'},
                 {'A','A'}
         };
-        Mangija mangijaA = new Mangija(0, maailm.maailmaPikkus- mängijaAIkoon.length, (byte)100, mängijaAIkoon);
+        Mangija mangijaA = new Mangija(0, maailm.maailmaPikkus-mängijaAIkoon.length, mängijaAIkoon, maailm, (byte)100);
         Iterator iteraator;
         while (true) {
             iteraator = Sisend.hoitudKlahvid.iterator();
