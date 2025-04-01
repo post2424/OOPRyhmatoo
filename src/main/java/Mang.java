@@ -24,6 +24,7 @@ public class Mang {
                 {'A','A'}
         };
         Mangija mangijaA = new Mangija(0, maailm.maailmaPikkus-mängijaAIkoon.length, mängijaAIkoon, maailm, (byte)100);
+        String[] mangijaAKlahvid = mangijaA.määraKlahvid();
         Iterator iteraator;
         while (true) {
             iteraator = Sisend.hoitudKlahvid.iterator();
@@ -31,7 +32,7 @@ public class Mang {
                 if (Sisend.hoitudKlahvid.contains("Escape")) {
                     katkestaMäng();
                 }
-                mangijaA.uuenda();
+                mangijaA.uuenda(mangijaAKlahvid);
                 Sisend.hoitudKlahvid.removeAll(Sisend.eemaldatavadKlahvid);
             }
             maailm.lisaMaailma(mangijaA);
