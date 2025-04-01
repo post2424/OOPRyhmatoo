@@ -35,6 +35,7 @@ public class Mang {
                 }
                 mangijaA.uuenda(mangijaAKlahvid);
                 Sisend.hoitudKlahvid.removeAll(Sisend.eemaldatavadKlahvid);
+                Sisend.eemaldatavadKlahvid.clear();
             }
             maailm.lisaMaailma(mangijaA);
             maailm.renderiMaailm();
