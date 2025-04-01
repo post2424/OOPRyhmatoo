@@ -20,8 +20,9 @@ public class Mang {
         Sisend.initsialiseeriSisend();
         Renderdaja maailm = new Renderdaja(50);
         char[][] mängijaAIkoon = new char[][]{
-                {'A','A'},
-                {'A','A'}
+                {'A','A','A'},
+                {'A','A','A'},
+                {'A','A','A'}
         };
         Mangija mangijaA = new Mangija(0, maailm.maailmaPikkus-mängijaAIkoon.length, mängijaAIkoon, maailm, (byte)100);
         String[] mangijaAKlahvid = mangijaA.määraKlahvid();
@@ -38,7 +39,7 @@ public class Mang {
             maailm.lisaMaailma(mangijaA);
             maailm.renderiMaailm();
             try {
-                Thread.sleep(250);
+                Thread.sleep(16);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
