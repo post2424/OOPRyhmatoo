@@ -9,10 +9,12 @@ public class Renderdaja {
     public double kuvasuhe = 9.0 / 16; // pikkus jagatud laius
     public int maailmaLaius;
     public int maailmaPikkus;
-    //public char[][] tühiMaailm;
+    public char[][] eelmineMaailm = null;
     public char[][] maailm;
 
-    public Renderdaja(int maailmaLaius) {
+
+    public Renderdaja(int maailmaLaius) {;
+        System.out.print("\033[?25l"); //eemaldab kursori ekraanilt
         this.maailmaLaius = maailmaLaius;
         this.maailmaPikkus = (int) (maailmaLaius * kuvasuhe / 3);
         puhastaMaailm();
@@ -49,7 +51,6 @@ public class Renderdaja {
             }
         }
     }
-
     /**
      * asendab maailma tühja maatriksiga
      */
@@ -61,25 +62,24 @@ public class Renderdaja {
      * väljastab ekraanile maailma
      */
     public void renderiMaailm() {
-        käsk();
-        for (int i = -1; i < maailmaPikkus + 1; i++) {
-            for (int j = -1; j < maailmaLaius + 1; j++) {
-                if (i == -1) System.out.print('#');
-                else if (i == maailmaPikkus) System.out.print('#');
-                else {
-                    if (j == -1) System.out.print("#");
-                    else if (j == maailmaLaius) System.out.print('#');
-                    else System.out.print(maailm[i][j]);
-                }
-            }
-            System.out.println();
-        }
-    }
 
-    public static void käsk() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        //if (eelmineMaailm.equals(maailm)) {
+            StringBuilder temp = new StringBuilder();
+            System.out.print(""); // teeb ekraani tühjaks
+            for (int i = -1; i < maailmaPikkus + 1; i++) {
+                for (int j = -1; j < maailmaLaius + 1; j++) {
+                    if (i == -1) temp.append('#');
+                    else if (i == maailmaPikkus) temp.append('#');
+                    else {
+                        if (j == -1) temp.append("#");
+                        else if (j == maailmaLaius) temp.append('#');
+                        else temp.append(maailm[i][j]);
+                    }
+                }
+                temp.append("\n");
+            }
+            System.out.print("\033[H\033[2J" + temp); // paneb cursori ekraani algusesse
+            //tühjendab ekraani
     }
 }
-
 

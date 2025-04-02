@@ -9,6 +9,7 @@ import java.util.Iterator;
 public class Mang {
     public static ArrayList<Mangija> mangijad = new ArrayList<>();
     public static ArrayList<Kuul> kuulid = new ArrayList<>();
+    public static final int FPS = 60;
 
     private static void katkestaMäng() {
         System.out.println("M4ngu too l6petatud.");
@@ -40,6 +41,8 @@ public class Mang {
         mangijad.add(mangijaA);
         mangijad.add(mangijaB);
         while (true) {
+            long praguneAeg = System.nanoTime();
+
             if (Sisend.hoitudKlahvid.contains("Escape")) katkestaMäng();
             maailm.puhastaMaailm();
             for (Mangija mangija : mangijad) {
@@ -52,10 +55,16 @@ public class Mang {
                 maailm.lisaMaailma(kuul);
             }
             maailm.renderiMaailm();
-            try {
-                Thread.sleep(16);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            long viimaneAeg = praguneAeg;
+            long mõõdunud = (praguneAeg - viimaneAeg) / 1000000;
+            long magamisAeg = 1000 / FPS - mõõdunud;
+            if (magamisAeg > 0) {
+
+                try {
+                    Thread.sleep(magamisAeg);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }

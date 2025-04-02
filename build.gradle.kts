@@ -6,7 +6,14 @@ version = "Algne"
 
 repositories {
     mavenCentral()
+    allprojects {
+        repositories {
+            maven { url = uri("https://jitpack.io") }
+
+        }
+    }
 }
+
 dependencies {
     implementation("com.github.kwhat:jnativehook:2.2.2")
 }
