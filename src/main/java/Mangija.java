@@ -9,17 +9,6 @@ public class Mangija extends Ese{
         super(x, y, ikoon, maailm);
         this.elupunktid = elupunktid;
     }
-    public String[] määraKlahvid() {
-        String[] klahvid = new String[4];
-        String[] suunad = {"üles", "vasakule", "alla", "paremale"};
-        for (int i = 0; i < 4; i++) {
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Sisesta klahv, mille abil mängija liigub "+suunad[i]);
-            String klahv = scan.nextLine();
-            klahvid[i] = klahv.toUpperCase();
-        }
-        return klahvid;
-    }
 
     public void uuendaKiirust(String[] klahvid) {
         if (Sisend.hoitudKlahvid.contains(klahvid[0])) {
