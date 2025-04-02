@@ -13,6 +13,30 @@ public abstract class Ese {
         this.maailm = maailm;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public byte getxKiirus() {
+        return xKiirus;
+    }
+
+    public byte getyKiirus() {
+        return yKiirus;
+    }
+
+    public void setxKiirus(byte xKiirus) {
+        this.xKiirus = xKiirus;
+    }
+
+    public void setyKiirus(byte yKiirus) {
+        this.yKiirus = yKiirus;
+    }
+
     public void uuendaPositsiooni(){
         this.x = Math.clamp(x+xKiirus,0, maailm.maailmaLaius-this.ikoon[0].length);
         this.y = Math.clamp(y+yKiirus,0,maailm.maailmaPikkus-this.ikoon.length);
