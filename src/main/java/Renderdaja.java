@@ -12,9 +12,9 @@ public class Renderdaja {
     public char[][] eelmineMaailm = null;
     public char[][] maailm;
 
-
     public Renderdaja(int maailmaLaius) {;
-        System.out.print("\033[?25l"); //eemaldab kursori ekraanilt
+        System.out.print("\033[?25l"); //eemaldab kursori
+        System.out.print("\033[2J"); // puhasta ekraan
         this.maailmaLaius = maailmaLaius;
         this.maailmaPikkus = (int) (maailmaLaius * kuvasuhe / 3);
         puhastaMaailm();
@@ -63,7 +63,8 @@ public class Renderdaja {
      */
     public void renderiMaailm() {
 
-        //if (eelmineMaailm.equals(maailm)) {
+        if (Mang.toimusMuutus) {
+            Mang.toimusMuutus = false;
             StringBuilder temp = new StringBuilder();
             System.out.print(""); // teeb ekraani tühjaks
             for (int i = -1; i < maailmaPikkus + 1; i++) {
@@ -78,8 +79,10 @@ public class Renderdaja {
                 }
                 temp.append("\n");
             }
-            System.out.print("\033[H\033[2J" + temp); // paneb cursori ekraani algusesse
-            //tühjendab ekraani
+            System.out.print("\033[H");
+            System.out.print (temp); // paneb cursori ekraani algusesse ja tühjendab ekraani
+
+        }
     }
 }
 

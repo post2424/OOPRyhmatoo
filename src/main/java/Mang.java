@@ -10,6 +10,7 @@ public class Mang {
     public static ArrayList<Mangija> mangijad = new ArrayList<>();
     public static ArrayList<Kuul> kuulid = new ArrayList<>();
     public static final int FPS = 60;
+    public static boolean toimusMuutus = true;
 
     private static void katkestaMäng() {
         System.out.println("M4ngu too l6petatud.");
@@ -34,9 +35,11 @@ public class Mang {
                 {'B', 'B', 'B'},
                 {'B', 'B', 'B'}
         };
-        Mangija mangijaA = new Mangija(0, maailm.maailmaPikkus - mängijaAIkoon.length, mängijaAIkoon, maailm, (byte) 100);
+        Mangija mangijaA = new Mangija(0, maailm.maailmaPikkus - mängijaAIkoon.length,
+                mängijaAIkoon,"\033[1;91m", maailm, (byte) 100);
         mangijaA.seadistaKlahvid("W", "A", "S", "D", "Q");
-        Mangija mangijaB = new Mangija(maailm.maailmaLaius - mängijaBIkoon[0].length, maailm.maailmaPikkus - mängijaBIkoon.length, mängijaBIkoon, maailm, (byte) 100);
+        Mangija mangijaB = new Mangija(maailm.maailmaLaius - mängijaBIkoon[0].length, maailm.maailmaPikkus - mängijaBIkoon.length,
+                mängijaBIkoon, "\033[1;91m", maailm, (byte) 100);
         mangijaB.seadistaKlahvid("Up", "Left", "Down", "Right", "U");
         mangijad.add(mangijaA);
         mangijad.add(mangijaB);
@@ -47,7 +50,7 @@ public class Mang {
             maailm.puhastaMaailm();
             for (Mangija mangija : mangijad) {
                 mangija.uuenda();
-                maailm.lisaMaailma(mangija);
+
             }
             Sisend.hoitudKlahvid.removeAll(Sisend.eemaldatavadKlahvid);
             Sisend.eemaldatavadKlahvid.clear();

@@ -20,15 +20,6 @@ public abstract class Ese {
     public int getY() {
         return y;
     }
-
-    public byte getxKiirus() {
-        return xKiirus;
-    }
-
-    public byte getyKiirus() {
-        return yKiirus;
-    }
-
     public void setxKiirus(byte xKiirus) {
         this.xKiirus = xKiirus;
     }
@@ -41,7 +32,10 @@ public abstract class Ese {
      * uuendab mängija positsiooni vastavalt tema kiirusele ja maailma laiusele
      */
     public void uuendaPositsiooni() {
+        int vanaX = x;
+        int vanaY = y;
         this.x = Math.clamp(x + xKiirus, 0, maailm.maailmaLaius - this.ikoon[0].length);
         this.y = Math.clamp(y + yKiirus, 0, maailm.maailmaPikkus - this.ikoon.length);
+        Mang.toimusMuutus = Mang.toimusMuutus || x != vanaX || y != vanaY;
     }
 }

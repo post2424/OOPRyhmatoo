@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Mangija extends Ese {
     private byte elupunktid;
-    private String ülesKlahv, vasakuleKlahv, allaKlahv, paremaleKlahv, tulistaKlahv;
+    private String ülesKlahv, vasakuleKlahv, allaKlahv, paremaleKlahv, tulistaKlahv, värv;
 
-    public Mangija(int x, int y, char[][] ikoon, Renderdaja maailm, byte elupunktid) {
+    public Mangija(int x, int y, char[][] ikoon, String värv, Renderdaja maailm, byte elupunktid) {
         super(x, y, ikoon, maailm);
         this.elupunktid = elupunktid;
+        this.värv = värv;
     }
 
     /**
@@ -71,6 +72,7 @@ public class Mangija extends Ese {
         yKiirus = 0;
         uuendaKiirust();
         uuendaPositsiooni();
+        maailm.lisaMaailma(this);
         tulista();
     }
 
