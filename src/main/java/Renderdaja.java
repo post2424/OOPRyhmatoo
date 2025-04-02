@@ -12,7 +12,6 @@ public class Renderdaja {
     //public char[][] tühiMaailm;
     public char[][] maailm;
 
-
     public Renderdaja(int maailmaLaius) {
         this.maailmaLaius = maailmaLaius;
         this.maailmaPikkus = (int) (maailmaLaius * kuvasuhe / 3);
@@ -25,6 +24,11 @@ public class Renderdaja {
         return tagasta;
     }
 
+    /**
+     * teeb maailma suurusega tühja maatriksi
+     *
+     * @return maatriks
+     */
     public char[][] genereeriMaailm() {
         char[][] väljasta = new char[maailmaPikkus][maailmaLaius];
         for (int i = 0; i < maailmaPikkus; i++) {
@@ -33,6 +37,11 @@ public class Renderdaja {
         return väljasta;
     }
 
+    /**
+     * lisab maailma eseme ikooni
+     *
+     * @param ese
+     */
     public void lisaMaailma(Ese ese) {
         for (int i = 0; i < ese.ikoon.length; i++) {
             for (int j = 0; j < ese.ikoon[0].length; j++) {
@@ -40,8 +49,17 @@ public class Renderdaja {
             }
         }
     }
-    public void puhastaMaailm(){maailm = genereeriMaailm();}
 
+    /**
+     * asendab maailma tühja maatriksiga
+     */
+    public void puhastaMaailm() {
+        maailm = genereeriMaailm();
+    }
+
+    /**
+     * väljastab ekraanile maailma
+     */
     public void renderiMaailm() {
         käsk();
         for (int i = -1; i < maailmaPikkus + 1; i++) {

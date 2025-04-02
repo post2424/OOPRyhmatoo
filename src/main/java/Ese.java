@@ -37,9 +37,11 @@ public abstract class Ese {
         this.yKiirus = yKiirus;
     }
 
-    public void uuendaPositsiooni(){
-        this.x = Math.clamp(x+xKiirus,0, maailm.maailmaLaius-this.ikoon[0].length);
-        this.y = Math.clamp(y+yKiirus,0,maailm.maailmaPikkus-this.ikoon.length);
-
+    /**
+     * uuendab mängija positsiooni vastavalt tema kiirusele ja maailma laiusele
+     */
+    public void uuendaPositsiooni() {
+        this.x = Math.clamp(x + xKiirus, 0, maailm.maailmaLaius - this.ikoon[0].length);
+        this.y = Math.clamp(y + yKiirus, 0, maailm.maailmaPikkus - this.ikoon.length);
     }
 }
