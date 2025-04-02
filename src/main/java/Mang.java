@@ -33,23 +33,20 @@ public class Mang {
                 {'B','B','B'}
         };
         Mangija mangijaA = new Mangija(0, maailm.maailmaPikkus-mängijaAIkoon.length, mängijaAIkoon, maailm, (byte)100);
+        mangijaA.seadistaKlahvid("W","A","S","D","Q");
         Mangija mangijaB = new Mangija(maailm.maailmaLaius-mängijaBIkoon[0].length, maailm.maailmaPikkus-mängijaBIkoon.length, mängijaBIkoon, maailm, (byte)100);
+        mangijaB.seadistaKlahvid("Up","Left","Down","Right", "U");
         mangijad.add(mangijaA);
         mangijad.add(mangijaB);
-        Iterator iteraator;
         while (true) {
-            iteraator = Sisend.hoitudKlahvid.iterator();
-            if (iteraator.hasNext()) {
-                if (Sisend.hoitudKlahvid.contains("Escape")) {
-                    katkestaMäng();
-                }
-                mangijaA.uuenda(new String[]{"W", "A", "S", "D", "Q"});
-                mangijaB.uuenda(new String[]{"I", "J", "K", "L", "U"});
-                Sisend.hoitudKlahvid.removeAll(Sisend.eemaldatavadKlahvid);
-                Sisend.eemaldatavadKlahvid.clear();
+            if (Sisend.hoitudKlahvid.contains("Escape")) katkestaMäng();
+            maailm.puhastaMaailm();
+            for (Mangija mangija : mangijad) {
+                mangija.uuenda();
+                maailm.lisaMaailma(mangija);
             }
-            maailm.lisaMaailma(mangijaA);
-            maailm.lisaMaailma(mangijaB);
+            Sisend.hoitudKlahvid.removeAll(Sisend.eemaldatavadKlahvid);
+            Sisend.eemaldatavadKlahvid.clear();
             for (Kuul kuul : kuulid) {
                 maailm.lisaMaailma(kuul);
             }

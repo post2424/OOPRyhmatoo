@@ -16,8 +16,7 @@ public class Renderdaja {
     public Renderdaja(int maailmaLaius) {
         this.maailmaLaius = maailmaLaius;
         this.maailmaPikkus = (int) (maailmaLaius * kuvasuhe / 3);
-
-        maailm = genereeriMaailm();
+        puhastaMaailm();
     }
 
     public static char[][] kopeeriMaatriks(char[][] maatriks) {
@@ -35,13 +34,13 @@ public class Renderdaja {
     }
 
     public void lisaMaailma(Ese ese) {
-        maailm = genereeriMaailm();
         for (int i = 0; i < ese.ikoon.length; i++) {
             for (int j = 0; j < ese.ikoon[0].length; j++) {
                 maailm[ese.y + j][ese.x + i] = ese.ikoon[j][i];
             }
         }
     }
+    public void puhastaMaailm(){maailm = genereeriMaailm();}
 
     public void renderiMaailm() {
         käsk();
