@@ -36,7 +36,7 @@ public class Mangija extends Ese {
 
     public void setElupunktid(byte elupunktid) {
         this.elupunktid = elupunktid;
-        if (elupunktid < 0)Mang.mangijad.remove(this);
+        if (elupunktid < 0)Mang.eemaldadaMangijad.add(this);
     }
 
     /**

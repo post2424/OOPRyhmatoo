@@ -4,12 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class Renderdaja {
     public double kuvasuhe = 9.0 / 16; // pikkus jagatud laius
     public int maailmaLaius;
     public int maailmaPikkus;
-    public char[][] eelmineMaailm = null;
     public char[][] maailm;
 
     public Renderdaja(int maailmaLaius) {

@@ -1,20 +1,16 @@
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
-import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
-import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.*;
 
 public class Mang {
-    public static HashSet<Mangija> mangijad = new HashSet<>();
-    public static HashSet<Kuul> kuulid = new HashSet<>();
+    public static ArrayList<Kuul> eemaldadaKuulid = new ArrayList<>();
+    public static ArrayList<Mangija> eemaldadaMangijad = new ArrayList<>();
+    public static ArrayList<Mangija> mangijad = new ArrayList<>();
+    public static ArrayList<Kuul> kuulid = new ArrayList<>();
     public static final int FPS = 60;
     public static boolean toimusMuutus = true;
-
     private static void katkestaMäng() {
         System.out.println("\033[?47l"); // taasta ekraan
         System.out.println("\033[?25h"); // tee kursor nähtavaks
@@ -25,6 +21,12 @@ public class Mang {
             nativeHookException.printStackTrace();
         }
         ProcessBuilder sulgeTerminal = new ProcessBuilder("taskkill", "/F", "/IM", "cmd.exe");
+        try {
+            sulgeTerminal.start();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         System.exit(0);
     }
     public static void main(String[] args) {
@@ -58,20 +60,29 @@ public class Mang {
         mangijad.add(mangijaA);
         mangijad.add(mangijaB);
         while (true) {
-            if (mangijad.size() < 1){
-                System.out.println("Võitja on "+ Arrays.toString(mangijad.toArray()));
+            if (mangijad.size() < 2){
+                System.out.println("V6itja on "+ mangijad.getFirst().ikoon[0][0]);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                katkestaMäng();
             }
+
             long praguneAeg = System.nanoTime();
             if (Sisend.hoitudKlahvid.contains("Escape")) katkestaMäng();
             maailm.puhastaMaailm();
             for (Mangija mangija : mangijad) {
                 mangija.uuenda();
             }
+            mangijad.removeAll(eemaldadaMangijad);
             Sisend.hoitudKlahvid.removeAll(Sisend.eemaldatavadKlahvid);
             Sisend.eemaldatavadKlahvid.clear();
-            for (Kuul kuul : kuulid) {
+            for (Kuul kuul: kuulid){
                 kuul.uuenda();
             }
+            kuulid.removeAll(eemaldadaKuulid);
             maailm.renderiMaailm();
             long viimaneAeg = praguneAeg;
             long mõõdunud = (praguneAeg - viimaneAeg) / 1000000;
@@ -90,3 +101,4 @@ public class Mang {
         }
     }
 }
+
