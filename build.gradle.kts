@@ -1,17 +1,11 @@
 plugins {
     id("java")
-    application // Add the application plugin
+    application
 }
 version = "Algne"
 
 repositories {
     mavenCentral()
-    allprojects {
-        repositories {
-            maven { url = uri("https://jitpack.io") }
-
-        }
-    }
 }
 
 dependencies {
@@ -23,5 +17,5 @@ tasks.test {
 }
 
 application {
-    mainClass.set("Mang") // Replace with the fully qualified name of your main class
+    mainClass.set("Mang")
 }

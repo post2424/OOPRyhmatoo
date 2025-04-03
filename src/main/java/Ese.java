@@ -1,5 +1,6 @@
 public abstract class Ese {
     int x, y;
+    byte kiirus;
     byte xKiirus, yKiirus;
     char[][] ikoon;
     Renderdaja maailm;
@@ -12,22 +13,6 @@ public abstract class Ese {
         this.ikoon = ikoon;
         this.maailm = maailm;
     }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-    public void setxKiirus(byte xKiirus) {
-        this.xKiirus = xKiirus;
-    }
-
-    public void setyKiirus(byte yKiirus) {
-        this.yKiirus = yKiirus;
-    }
-
     /**
      * uuendab mängija positsiooni vastavalt tema kiirusele ja maailma laiusele
      */

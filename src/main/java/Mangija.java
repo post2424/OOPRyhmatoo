@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class Mangija extends Ese {
     private byte elupunktid;
-    private String ülesKlahv, vasakuleKlahv, allaKlahv, paremaleKlahv, tulistaKlahv, värv;
-
+    public String värv = "\033[31",viimaneKlahv = "";
+    public String ülesKlahv,vasakuleKlahv,allaKlahv,paremaleKlahv,tulistaKlahv;
     public Mangija(int x, int y, char[][] ikoon, String värv, Renderdaja maailm, byte elupunktid) {
         super(x, y, ikoon, maailm);
         this.elupunktid = elupunktid;
         this.värv = värv;
     }
+
 
     /**
      * meetod, mille abil seadistatakse peaklassis mängija kaustatavd klahvid
@@ -35,6 +36,7 @@ public class Mangija extends Ese {
 
     public void setElupunktid(byte elupunktid) {
         this.elupunktid = elupunktid;
+        if (elupunktid < 0)Mang.mangijad.remove(this);
     }
 
     /**
@@ -43,15 +45,19 @@ public class Mangija extends Ese {
     public void uuendaKiirust() {
         if (Sisend.hoitudKlahvid.contains(ülesKlahv)) {
             yKiirus = -1;
+            viimaneKlahv = ülesKlahv;
         }
         if (Sisend.hoitudKlahvid.contains(vasakuleKlahv)) {
             xKiirus = -1;
+            viimaneKlahv = vasakuleKlahv;
         }
         if (Sisend.hoitudKlahvid.contains(allaKlahv)) {
             yKiirus = 1;
+            viimaneKlahv = allaKlahv;
         }
         if (Sisend.hoitudKlahvid.contains(paremaleKlahv)) {
             xKiirus = 1;
+            viimaneKlahv = allaKlahv;
         }
     }
 
@@ -60,10 +66,7 @@ public class Mangija extends Ese {
      */
     public void tulista() {
         if (Sisend.hoitudKlahvid.contains(tulistaKlahv)) {
-            Kuul kuul = new Kuul(x, y, new char[][]{{'-'}}, maailm, this);
-            kuul.setxKiirus(xKiirus);
-            kuul.setyKiirus(yKiirus);
-            Mang.kuulid.add(kuul);
+            Mang.kuulid.add(new Kuul(x, y, new char[][]{{'-'}}, maailm, this));
         }
     }
 

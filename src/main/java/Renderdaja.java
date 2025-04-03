@@ -12,11 +12,9 @@ public class Renderdaja {
     public char[][] eelmineMaailm = null;
     public char[][] maailm;
 
-    public Renderdaja(int maailmaLaius) {;
-        System.out.print("\033[?25l"); //eemaldab kursori
-        System.out.print("\033[2J"); // puhasta ekraan
+    public Renderdaja(int maailmaLaius) {
         this.maailmaLaius = maailmaLaius;
-        this.maailmaPikkus = (int) (maailmaLaius * kuvasuhe / 3);
+        this.maailmaPikkus = (int) (maailmaLaius * kuvasuhe / 2);
         puhastaMaailm();
     }
 
@@ -47,7 +45,7 @@ public class Renderdaja {
     public void lisaMaailma(Ese ese) {
         for (int i = 0; i < ese.ikoon.length; i++) {
             for (int j = 0; j < ese.ikoon[0].length; j++) {
-                maailm[ese.y + j][ese.x + i] = ese.ikoon[j][i];
+                maailm[ese.y + i][ese.x + j] = ese.ikoon[i][j];
             }
         }
     }
@@ -81,7 +79,6 @@ public class Renderdaja {
             }
             System.out.print("\033[H");
             System.out.print (temp); // paneb cursori ekraani algusesse ja tühjendab ekraani
-
         }
     }
 }
