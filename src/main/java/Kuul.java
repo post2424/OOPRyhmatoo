@@ -9,12 +9,16 @@ public class Kuul extends Ese {
     private void määraSuund(){
         if (omanik.viimaneKlahv == omanik.ülesKlahv) {
             this.yKiirus = (byte)-kuuliKiirus;
+            ikoon = new char[][]{{'|'}};
         } else if (omanik.viimaneKlahv == omanik.vasakuleKlahv) {
             this.xKiirus = (byte)-kuuliKiirus;
+            ikoon = new char[][]{{'-'}};
         } else if (omanik.viimaneKlahv == omanik.allaKlahv) {
             this.yKiirus = kuuliKiirus;
+            ikoon = new char[][]{{'|'}};
         } else if (omanik.viimaneKlahv == omanik.paremaleKlahv) {
             this.xKiirus = kuuliKiirus;
+            ikoon = new char[][]{{'-'}};
         }
     }
     /**

@@ -57,7 +57,7 @@ public class Mangija extends Ese {
         }
         if (Sisend.hoitudKlahvid.contains(paremaleKlahv)) {
             xKiirus = 1;
-            viimaneKlahv = allaKlahv;
+            viimaneKlahv = paremaleKlahv;
         }
     }
 
