@@ -1,13 +1,8 @@
-import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Iterator;
+
 
 public class Renderdaja {
-    public double kuvasuhe = 9.0 / 16; // pikkus jagatud laius
+    public double kuvasuhe = 1 / 1; // pikkus jagatud laius
     public int maailmaLaius;
     public int maailmaPikkus;
     public char[][] maailm;
@@ -60,7 +55,6 @@ public class Renderdaja {
      * väljastab ekraanile maailma
      */
     public void renderiMaailm() {
-
         if (Mang.toimusMuutus) {
             Mang.toimusMuutus = false;
             StringBuilder temp = new StringBuilder();
@@ -82,7 +76,6 @@ public class Renderdaja {
             for (Mangija mangija: Mang.mangijad){
                 System.out.println("Mangija " + mangija.ikoon[0][0] + " elupunktid on "  + mangija.getElupunktid()+" ");
             }
-
         }
     }
 }

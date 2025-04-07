@@ -1,7 +1,3 @@
-import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
-
-import java.util.Scanner;
-
 public class Mangija extends Ese {
     private byte elupunktid;
     public String värv = "\033[31",viimaneKlahv = "";

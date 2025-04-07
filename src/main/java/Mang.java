@@ -34,16 +34,14 @@ public class Mang {
         System.out.print("\033[?25l"); //eemaldab kursori
         System.out.print("\033[2J"); // puhasta ekraan
         Sisend.initsialiseeriSisend();
-        Renderdaja maailm = new Renderdaja(80);
+        Renderdaja maailm = new Renderdaja(45);
         char[][] mängijaAIkoon = new char[][]{
-                {'A','A','A','A','A','A'},
                 {'A','A','A','A','A','A'},
                 {'A','A','A','A','A','A'},
                 {'A','A','A','A','A','A'},
                 {'A','A','A','A','A','A'}
         };
         char[][] mängijaBIkoon = new char[][]{
-                {'B','B','B','B','B','B'},
                 {'B','B','B','B','B','B'},
                 {'B','B','B','B','B','B'},
                 {'B','B','B','B','B','B'},
@@ -85,7 +83,7 @@ public class Mang {
             kuulid.removeAll(eemaldadaKuulid);
             maailm.renderiMaailm();
             long viimaneAeg = praguneAeg;
-            long mõõdunud = (praguneAeg - viimaneAeg) / 1000000;
+            long mõõdunud = (praguneAeg - viimaneAeg) / 1_000_000;
             long magamisAeg = 1000 / FPS - mõõdunud;
             if (magamisAeg > 0) {
                 try {

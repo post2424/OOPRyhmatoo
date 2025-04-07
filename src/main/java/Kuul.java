@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 public class Kuul extends Ese {
     Mangija omanik;
     public byte kuuliKiirus = 2;
@@ -17,8 +15,8 @@ public class Kuul extends Ese {
         } else if (omanik.viimaneKlahv == omanik.vasakuleKlahv) {
             this.xKiirus = (byte)-kuuliKiirus;
             ikoon = new char[][]{{'-'}};
-            y += (omanik.ikoon.length-1)/2;
             x--;
+            y += (omanik.ikoon.length-1)/2;
         } else if (omanik.viimaneKlahv == omanik.allaKlahv) {
             this.yKiirus = kuuliKiirus;
             ikoon = new char[][]{{'|'}};
@@ -55,7 +53,6 @@ public class Kuul extends Ese {
     }
     public void pihta(Mangija mangija){
         mangija.setElupunktid((byte) (mangija.getElupunktid()-(int)(Math.random()*10)-20));
-        Mang.eemaldadaKuulid.add(this);
-        Mang.toimusMuutus = true;
+        Mang.eemaldadaKuulid.add(this);Mang.toimusMuutus = true;
     }
 }
