@@ -2,7 +2,7 @@ import java.util.Iterator;
 
 public class Kuul extends Ese {
     Mangija omanik;
-    public byte kuuliKiirus = 3;
+    public byte kuuliKiirus = 2;
     public Kuul(int x, int y, char[][] ikoon, Renderdaja maailm, Mangija omanik) {
         super(x, y, ikoon, maailm);
         this.omanik = omanik;
@@ -12,15 +12,23 @@ public class Kuul extends Ese {
         if (omanik.viimaneKlahv == omanik.ülesKlahv) {
             this.yKiirus = (byte)-kuuliKiirus;
             ikoon = new char[][]{{'|'}};
+            x += (omanik.ikoon[0].length-1)/2;
+            y--;
         } else if (omanik.viimaneKlahv == omanik.vasakuleKlahv) {
             this.xKiirus = (byte)-kuuliKiirus;
             ikoon = new char[][]{{'-'}};
+            y += (omanik.ikoon.length-1)/2;
+            x--;
         } else if (omanik.viimaneKlahv == omanik.allaKlahv) {
             this.yKiirus = kuuliKiirus;
             ikoon = new char[][]{{'|'}};
+            x += (omanik.ikoon[0].length-1)/2;
+            y += omanik.ikoon.length;
         } else if (omanik.viimaneKlahv == omanik.paremaleKlahv) {
             this.xKiirus = kuuliKiirus;
             ikoon = new char[][]{{'-'}};
+            x += omanik.ikoon[0].length;
+            y += (omanik.ikoon.length-1)/2;
         }
     }
     /**
@@ -48,5 +56,6 @@ public class Kuul extends Ese {
     public void pihta(Mangija mangija){
         mangija.setElupunktid((byte) (mangija.getElupunktid()-(int)(Math.random()*10)-20));
         Mang.eemaldadaKuulid.add(this);
+        Mang.toimusMuutus = true;
     }
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Mangija extends Ese {
     private byte elupunktid;
     public String värv = "\033[31",viimaneKlahv = "";
+    private int viimatiTulistas = 0;
     public String ülesKlahv,vasakuleKlahv,allaKlahv,paremaleKlahv,tulistaKlahv;
     public Mangija(int x, int y, char[][] ikoon, String värv, Renderdaja maailm, byte elupunktid) {
         super(x, y, ikoon, maailm);
@@ -65,9 +66,13 @@ public class Mangija extends Ese {
      * kui mängija hoiab all tulistamise klahvi, lisatakse maailma kuul
      */
     public void tulista() {
-        if (Sisend.hoitudKlahvid.contains(tulistaKlahv)) {
-            Mang.kuulid.add(new Kuul(x, y, new char[][]{{'-'}}, maailm, this));
+        if (viimatiTulistas == 0){
+            if (Sisend.hoitudKlahvid.contains(tulistaKlahv)) {
+                viimatiTulistas = 50;
+                Mang.kuulid.add(new Kuul(x, y, new char[][]{{'-'}}, maailm, this));
+            }
         }
+        else {viimatiTulistas--;}
     }
 
     public void uuenda() {

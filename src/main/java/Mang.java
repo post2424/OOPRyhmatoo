@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.util.*;
 
 public class Mang {
-    public static ArrayList<Kuul> eemaldadaKuulid = new ArrayList<>();
-    public static ArrayList<Mangija> eemaldadaMangijad = new ArrayList<>();
-    public static ArrayList<Mangija> mangijad = new ArrayList<>();
-    public static ArrayList<Kuul> kuulid = new ArrayList<>();
+    public static HashSet<Kuul> eemaldadaKuulid = new HashSet<>();
+    public static HashSet<Mangija> eemaldadaMangijad = new HashSet<>();
+    public static HashSet<Mangija> mangijad = new HashSet<>();
+    public static HashSet<Kuul> kuulid = new HashSet<>();
     public static final int FPS = 60;
     public static boolean toimusMuutus = true;
     private static void katkestaMäng() {
@@ -40,11 +40,9 @@ public class Mang {
                 {'A','A','A','A','A','A'},
                 {'A','A','A','A','A','A'},
                 {'A','A','A','A','A','A'},
-                {'A','A','A','A','A','A'},
                 {'A','A','A','A','A','A'}
         };
         char[][] mängijaBIkoon = new char[][]{
-                {'B','B','B','B','B','B'},
                 {'B','B','B','B','B','B'},
                 {'B','B','B','B','B','B'},
                 {'B','B','B','B','B','B'},
@@ -61,9 +59,11 @@ public class Mang {
         mangijad.add(mangijaB);
         while (true) {
             if (mangijad.size() < 2){
-                System.out.println("V6itja on "+ mangijad.getFirst().ikoon[0][0]);
+                for (Mangija mangija : mangijad){
+                    System.out.println("V6itja on " + mangija.ikoon[0][0]);
+                }
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

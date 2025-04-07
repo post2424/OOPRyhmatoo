@@ -78,7 +78,11 @@ public class Renderdaja {
                 temp.append("\n");
             }
             System.out.print("\033[H");
-            System.out.print (temp); // paneb cursori ekraani algusesse ja tühjendab ekraani
+            System.out.println(temp); // paneb cursori ekraani algusesse
+            for (Mangija mangija: Mang.mangijad){
+                System.out.println("Mangija " + mangija.ikoon[0][0] + " elupunktid on "  + mangija.getElupunktid()+" ");
+            }
+
         }
     }
 }
